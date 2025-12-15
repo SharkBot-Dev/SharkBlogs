@@ -4,6 +4,7 @@ from flask import Flask, make_response, request, redirect, render_template
 from werkzeug.security import generate_password_hash, check_password_hash
 import markdown
 import bleach
+from waitress import serve
 
 # DB初期化
 def init_db():
@@ -219,4 +220,5 @@ def admin_delete(code):
 
 # 起動
 if __name__ == "__main__":
-    app.run("0.0.0.0", port=5008, debug=True)
+    # app.run("0.0.0.0", port=5008, debug=True)
+    serve(app, host='0.0.0.0', port=5008)
