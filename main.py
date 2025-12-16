@@ -106,12 +106,21 @@ def report_detail(code):
     allowed_tags.update([
         "p", "pre", "code",
         "h1", "h2", "h3",
-        "table", "tr", "td", "th"
+        "table", "tr", "td", "th",
+        "blockquote", "ul", "ol", "li",
+        "strong", "em", "hr", "br",
+        "a", "img", "thead", "tbody",
     ])
+
+    allowed_attrs = {
+        "a": ["href", "title"],
+        "img": ["src", "alt", "title"]
+    }
 
     html = bleach.clean(
         html,
         tags=allowed_tags,
+        attributes=allowed_attrs,
         strip=True
     )
 
